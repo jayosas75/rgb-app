@@ -65,26 +65,27 @@ onMount(() => {
 	init();
 
 	/*----Picks random color from colors array----*/
-	// function pickColor(){
-	//     let random = Math.floor(Math.random() * colors.length);
-	//     return colors[random];
-	// }
+	function pickColor(){
+	    let random = Math.floor(Math.random() * numCircles);
+		console.log('random:', random)
+	    return colors[random];
+	}
 
 	/*----Resets colors, picks a color from color array, sets colors to circles----*/
 	function reset(){
-		// colors = generateRandomColors(numCircles);
-		let pickedColor = 'pickColor();';
+		colors = generateRandomColors(numCircles);		
+		let pickedColor = pickColor();
 		colorDisplay !== null ? colorDisplay.textContent = pickedColor : null;
 		messageDisplay !== null ? messageDisplay.textContent = '' : null;
+		console.log('colors:', colors)
 		//change colors of circles
-		// for(let i = 0; i < circles.length; i++){
-		// 	if(colors[i]){
-		// 		circles[i].style.display = 'block';
-		// 		circles[i].style.background = colors[i];
-		// 	} else {
-		// 		circles[i].style.display = 'none';
-		// 	}
-		// }
+		if(circles.length > 0) {
+			for(let i = 0; i < circles.length; i++){
+				console.log('CIRCLE:', circles[i]);
+				circles[i].style.display = 'block';
+				circles[i].style.background = colors[i];
+		}
+		}
 	}
 
 	/*-----Function to apply handlers to easy and hard mode buttons-----*/
@@ -133,21 +134,21 @@ onMount(() => {
 
 
 /*----Generates either 6 or 3 colors based on difficulty selected----*/
-// function generateRandomColors(num){
-//     let arr = [];
-//     for(let i = 0; i < num; i++) {
-//         arr.push(randomColor())
-//     }
-//     return arr;
-// }
+function generateRandomColors(num){
+    let arr = [];
+    for(let i = 0; i < num; i++) {
+        arr.push(randomColor())
+    }
+    return arr;
+}
 
 /*----Picks 3 random colors (r, g, b)----*/
-// function randomColor(){
-//     let r = Math.floor(Math.random() * 256);
-//     let g = Math.floor(Math.random() * 256);
-//     let b = Math.floor(Math.random() * 256);
-//     return "rgb(" + r + ", " + g + ", " + b + ")";
-// }
+function randomColor(){
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + ", " + g + ", " + b + ")";
+}
 </script>
 
 <svelte:head>
@@ -171,12 +172,12 @@ onMount(() => {
 	
 		<div id="container">
 	
-			<div class='square'></div>
-			<div class='square'></div>
-			<div class='square'></div>
-			<div class='square'></div>
-			<div class='square'></div>
-			<div class='square'></div>
+			<div class='square' style='caret-color: transparent;'></div>
+			<div class='square' style='caret-color: transparent;'></div>
+			<div class='square' style='caret-color: transparent;'></div>
+			<div class='square' style='caret-color: transparent;'></div>
+			<div class='square' style='caret-color: transparent;'></div>
+			<div class='square' style='caret-color: transparent;'></div>
 	
 		</div>
 	 <!-- <Hello on:message={handleMessage}/>
