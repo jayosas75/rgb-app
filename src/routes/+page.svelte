@@ -152,6 +152,7 @@
 	onMount(() => {
 		/*-----Initialize Game-----*/
 		init();
+		
 
 		/*-----Selectors to change elements on DOM-----*/
 		// let circles = document.getElementsByClassName('circle');
@@ -167,6 +168,7 @@
 
 <svelte:head>
 	<title>RGB Color Game - JY</title>
+	<tag></tag>
 	<meta name="description" content="RBG Guessing Game" />
 </svelte:head>
 
